@@ -77,12 +77,47 @@ body {
   grid-area: header;
 }
 
+#cabecera, .slider, #footer {
+  animation: fading 1s ease-out;
+}
+
+
+@keyframes fading {
+  0%{opacity: 0;}
+
+  100%{opacity: 1;}
+}
+
 .cabecera__logo {
   width: 15%;
   left: 1%;
   margin-left: 13%;
   margin-top: 3.5%;
   position: absolute;
+  animation-name: logoAnimation;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 1;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
+  animation-play-state: initial;
+
+}
+
+@keyframes logoAnimation {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  20%,80% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .cabecera__background {
@@ -118,14 +153,34 @@ body {
 .cabecera__lista__item__menu__boton {
   text-decoration: none;
   color: aliceblue;
+  transition: all 0.4s;
 }
 
 .cabecera__lista__item__menu__boton:hover { 
   background-color:aliceblue;
   color:#017bab;
   border-radius: 3px 3px 3px 3px;
-  margin: 0% 5% 0% 5%;
+  animation-name: menuBoton;
+  animation-iteration-count: 1;
+  animation-play-state: paused;
+  animation-duration: 0.25s;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
+
+@keyframes menuBoton {
+  0%   {border: 0.5px solid #ffffff;
+    border-radius: 3px 3px 3px 3px;
+  }
+  25%  {border: 0.5px solid #ffe6e6;
+    border-radius: 3px 3px 3px 3px;
+  }
+  50%  {border: 0.5px solid #3683f6;
+    border-radius: 3px 3px 3px 3px;
+  }
+  100% {border: px solid #345bb3;
+    border-radius: 3px 3px 3px 3px;
+  }
+    }
 
 .cabecera__lista__busqueda {
   font-size: 2vw;
@@ -642,7 +697,7 @@ h5 {
 }
 
 .wrapper:hover {
-  animation: card 1s  0s 1 normal forwards;
+  animation: card 0.4s  0s 1 normal forwards;
 }
 
 @keyframes card {
@@ -802,6 +857,11 @@ span {
 .footer__redes__item__boton {
   width: 70%;
   height: auto;
+  transition: all .2s ease-in-out;
+}
+
+.footer__redes__item__boton:hover {
+  transform: scale(1.5); 
 }
 
 .footer__contacto {
